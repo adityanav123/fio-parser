@@ -75,15 +75,16 @@ int parse_fio(char **files, int count, const char *operation, fio_parse_t *resul
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
-        fprintf(stderr, "USAGE: %s <read|write> <file1> [file2] ...\n", argv[0]);
+        fprintf(stderr, "USAGE: %s <read|write|rread|rwrite> <file1> [file2] ...\n", argv[0]);
         fprintf(stderr, "Example: %s read fio_read_200MB.log fio_read.log fio_read_300MB.log fio_read_2G.log\n", argv[0]);
         return 1;
     }
 
     char *operation = argv[1];
-    if (strcmp(operation, "read") != 0 && strcmp(operation, "write") != 0) {
-        fprintf(stderr, "USAGE: %s <read|write> <file1> [file2] ...\n", argv[0]);
+    if (strcmp(operation, "read") != 0 && strcmp(operation, "write") != 0 && strcmp(operation, "rread") != 0 && strcmp(operation, "rwrite") != 0) {
+        fprintf(stderr, "USAGE: %s <read|write|rread|rwrite> <file1> [file2] ...\n", argv[0]);
         fprintf(stderr, "Example: %s read fio_read_200MB.log fio_read.log fio_read_300MB.log fio_read_2G.log\n", argv[0]);
+        fprintf(stderr, "*Note: rread: random-read, rwrite: random-write\n");
         return 1;
     }
 
